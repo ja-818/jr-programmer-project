@@ -11,6 +11,14 @@ using UnityEngine.AI;
 public abstract class Unit : MonoBehaviour,
     UIMainScene.IUIInfoContent
 {
+    private void Start()
+    {
+        if(MainManager.Instance != null)
+        {
+            SetColor(MainManager.Instance.TeamColor);
+        }
+    }
+
     public float Speed = 3;
 
     protected NavMeshAgent m_Agent;
@@ -22,11 +30,6 @@ public abstract class Unit : MonoBehaviour,
         m_Agent.speed = Speed;
         m_Agent.acceleration = 999;
         m_Agent.angularSpeed = 999;
-    }
-
-    private void Start()
-    {
-
     }
 
     void SetColor(Color c)
